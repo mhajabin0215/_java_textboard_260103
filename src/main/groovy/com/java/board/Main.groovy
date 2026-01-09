@@ -16,8 +16,18 @@ public class Main{
                 System.out.print("제목 : ")
                 String subject = sc.nextLine();
 
+                if(subject.trim().length() == 0){
+                    System.out.println("제목을 입력해주세요.");
+                    continue;
+                }
+
                 System.out.print("내용 : ")
                 String content = sc.nextLine();
+
+                if(content.trim().length() == 0){
+                    System.out.println("내용을 입력해주세요.");
+                    continue;
+                }
                 
                 System.out.println("1번 게시물이 등록되었습니다. ")
             }
