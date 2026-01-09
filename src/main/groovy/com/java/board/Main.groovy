@@ -1,9 +1,11 @@
 package com.java.board
 
+import org.jline.reader.impl.completer.SystemCompleter
+
 public class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int lastArticleID = 0;
+        int lastArticleId = 0;
 
         System.out.println("== 자바 텍스트 게시판 ==");
         System.out.println("텍스트 게시판을 시작합니다.");
@@ -30,7 +32,15 @@ public class Main{
                     continue;
                 }
 
-                int id = ++lastArticleID;
+                int id = ++lastArticleId;
+
+                //객체 생성 후, 객체가 가지고 있는 변수에 데이터 저장
+                Article article = new Article();
+                article.id = id;
+                article.subject = subject;
+                article.content = content;
+
+                System.out.println("생성 된 게시물 객체 : " + article);
 
                 System.out.printf("%d번 게시물이 등록되었습니다.\n", id);
             }
@@ -46,4 +56,10 @@ public class Main{
 
         sc.close();
     }
+}
+
+class Article {
+    int id;
+    String subject;
+    String content;
 }
