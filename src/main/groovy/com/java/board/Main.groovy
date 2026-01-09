@@ -3,6 +3,7 @@ package com.java.board
 public class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int lastArticleID = 0;
 
         System.out.println("== 자바 텍스트 게시판 ==");
         System.out.println("텍스트 게시판을 시작합니다.");
@@ -28,8 +29,10 @@ public class Main{
                     System.out.println("내용을 입력해주세요.");
                     continue;
                 }
-                
-                System.out.println("1번 게시물이 등록되었습니다. ")
+
+                int id = ++lastArticleID;
+
+                System.out.printf("%d번 게시물이 등록되었습니다.\n", id);
             }
             else if(cmd.equals("exit")) {
                 System.out.println("텍스트 게시판을 종료합니다.");
