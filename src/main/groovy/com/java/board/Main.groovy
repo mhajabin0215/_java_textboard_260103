@@ -3,8 +3,17 @@ package com.java.board
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Main {
+
+    static void makeArticleTestData(List<Article> articles) {
+
+
+        IntStream.rangeClosed(1, 3)
+                .forEach(i -> articles.add(new Article(i, "제목" + i, "내용" + i)));
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -12,6 +21,8 @@ public class Main {
 
         int lastArticleId = 0;
         Article lastArticle = null;
+
+        makeArticleTestData(articles);
 
         System.out.println("== 자바 텍스트 게시판 ==");
         System.out.println("텍스트 게시판을 시작합니다.");
@@ -56,23 +67,7 @@ public class Main {
                 System.out.println("== 게시물 리스트 ==");
                 System.out.println("번호 | 제목");
 
-                // v1
-                /*
-                for(int i = 0; i < articles.size(); i++) {
-                  Article article = articles.get(i);
 
-                  System.out.printf("%d | %s\n", article.id, article.subject);
-                }
-                */
-
-                // v2
-                /*
-                for(Article article : articles) {
-                  System.out.printf("%d | %s\n", article.id, article.subject);
-                }
-                */
-
-                // v3
                 articles.forEach(article
                         -> System.out.printf("%d | %s\n", article.id, article.subject));
 
