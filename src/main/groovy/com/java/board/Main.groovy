@@ -8,7 +8,17 @@ import java.util.stream.IntStream;
 public class Main {
 
     static void makeArticleTestData(List<Article> articles) {
+        /*
+        articles.add(new Article(1, "제목1", "내용1"));
+        articles.add(new Article(2, "제목2", "내용2"));
+        articles.add(new Article(3, "제목3", "내용3"));
+         */
 
+        /*
+        for(int i = 1; i <= 3; i++ ){
+          articles.add(new Article(i, "제목" + i, "내용" + i);
+        }
+        */
 
         IntStream.rangeClosed(1, 3)
                 .forEach(i -> articles.add(new Article(i, "제목" + i, "내용" + i)));
@@ -18,12 +28,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         List<Article> articles = new ArrayList<>();
+
         makeArticleTestData(articles);
 
         int lastArticleId = articles.get(articles.size() - 1).id;
 
         Article lastArticle = null;
-
 
         System.out.println("== 자바 텍스트 게시판 ==");
         System.out.println("텍스트 게시판을 시작합니다.");
@@ -68,9 +78,11 @@ public class Main {
                 System.out.println("== 게시물 리스트 ==");
                 System.out.println("번호 | 제목");
 
+                for(int i = articles.size() - 1; i >= 0; i--) {
+                    Article article = articles.get(i);
 
-                articles.forEach(article
-                        -> System.out.printf("%d | %s\n", article.id, article.subject));
+                    System.out.printf("%d | %s\n", article.id, article.subject);
+                }
 
             } else if (cmd.equals("/usr/article/detail")) {
                 Article article = lastArticle;
